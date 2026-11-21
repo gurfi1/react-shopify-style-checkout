@@ -32,6 +32,7 @@ Everything assembled into the page: layout, form, order summary, and the thank-y
 | `subtotal` | `number` | Defaults to the sum of the item prices. |
 | `storeName, logo, homeHref, cartHref` | `string, ReactNode, string, string` | The header. |
 | `accent` | `string` | Brand colour. |
+| `dir` | `'ltr' \| 'rtl'` | Text direction. Leave out to follow the page. With "rtl" the layout mirrors and numbers, codes and prices keep reading left to right. |
 | `locale, currency` | `string` | For prices. Default en-US and USD. |
 | `labels` | `Partial<Labels>` | Wording to replace; the rest stays English. |
 | `countries, defaultCountry` | `Country[], string` | Where you ship, with address formats. |

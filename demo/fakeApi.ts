@@ -1,4 +1,4 @@
-import { prefersReducedMotion, type CheckoutApi } from '../src';
+import { prefersReducedMotion, type CheckoutApi, type ShippingRate } from '../src';
 
 /**
  * A pretend back end for the demo. Nothing here talks to a network: it answers from canned data
@@ -18,33 +18,47 @@ const ADDRESSES: Record<string, [string, string, string, string][]> = {
   IL: [['Rothschild Blvd', 'Tel Aviv-Yafo', '', '6688101'], ['Jaffa St', 'Jerusalem', '', '9414109'], ['HaNassi Blvd', 'Haifa', '', '3463406'], ['Herzl St', 'Rishon LeZion', '', '7526701'], ['Rager Blvd', 'Beersheba', '', '8489312']],
 };
 
-export function createFakeApi(subtotal: number): CheckoutApi {
+export type FakeApiOptions = {
+  /** Replaces the address book: country code to [street, city, region, postal] entries. */
+  addresses?: Record<string, [string, string, string, string][]>;
+  /** Builds the street line from a house number and a street. Default: number first. */
+  formatLine?: (number: string, street: string) => string;
+  /** Replaces the three shipping rates. */
+  rates?: ShippingRate[];
+  /** The message for a discount code that is not accepted. */
+  invalidDiscount?: string;
+};
+
+const DEFAULT_RATES: ShippingRate[] = [
+  { id: 'economy', name: 'Economy', eta: '5 to 8 business days', price: 0 },
+  { id: 'standard', name: 'Standard', eta: '3 to 4 business days', price: 6.9 },
+  { id: 'express', name: 'Express', eta: '1 to 2 business days', price: 14.9 },
+];
+
+export function createFakeApi(subtotal: number, options: FakeApiOptions = {}): CheckoutApi {
+  const formatLine = options.formatLine ?? ((number, street) => `${number} ${street}`);
   return {
     async suggestAddresses(query, country) {
       await pause(120);
-      const book = ADDRESSES[country] ?? [];
-      const match = query.match(/^(\d+[a-z]?)?\s*(.*)$/i);
-      const number = match?.[1] || '12';
-      const typed = (match?.[2] ?? '').trim();
+      const book = (options.addresses ?? ADDRESSES)[country] ?? [];
+      // The house number may be typed before or after the street.
+      const number = query.match(/\d+[a-z]?/i)?.[0] ?? '12';
+      const typed = query.replace(/\d+[a-z]?/i, '').trim();
       const hit = typed ? book.find(entry => entry[0].toLowerCase().includes(typed.toLowerCase())) : undefined;
       // Like a real lookup, the same street name turns up in several towns.
       const street = hit ? hit[0] : typed.length > 2 ? typed.replace(/\b[a-z]/g, letter => letter.toUpperCase()) : '';
       const towns = hit ? [hit, ...book.filter(entry => entry !== hit)] : book;
-      return towns.slice(0, 5).map(entry => ({ line1: `${number} ${street || entry[0]}`, city: entry[1], region: entry[2], postal: entry[3] }));
+      return towns.slice(0, 5).map(entry => ({ line1: formatLine(number, street || entry[0]), city: entry[1], region: entry[2], postal: entry[3] }));
     },
 
     async shippingRates() {
       await pause(1000);
-      return [
-        { id: 'economy', name: 'Economy', eta: '5 to 8 business days', price: 0 },
-        { id: 'standard', name: 'Standard', eta: '3 to 4 business days', price: 6.9 },
-        { id: 'express', name: 'Express', eta: '1 to 2 business days', price: 14.9 },
-      ];
+      return options.rates ?? DEFAULT_RATES;
     },
 
     async applyDiscount(code) {
       await pause(700);
-      if (code !== 'WELCOME10') throw new Error('Enter a valid discount code or gift card');
+      if (code !== 'WELCOME10') throw new Error(options.invalidDiscount ?? 'Enter a valid discount code or gift card');
       return { code, amount: Math.round(subtotal * 10) / 100 };
     },
 

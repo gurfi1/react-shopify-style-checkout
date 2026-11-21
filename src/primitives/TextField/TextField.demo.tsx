@@ -23,6 +23,7 @@ const demo: Demo = {
     ['error', 'string | null', 'Red border and a message that opens underneath. Sets aria-invalid and aria-describedby.'],
     ['accessory', 'ReactNode', 'Icon or tooltip button at the end of the field.'],
     ['below', 'ReactNode', 'Content under the field, above the error: a hint, a suggestion list.'],
+    ['dir', "'ltr' | 'rtl' | 'auto'", 'Direction of the typed text. By default a filled field takes it from what was typed, so English in a Hebrew form (or the reverse) reads correctly. Set "ltr" for numbers and codes.'],
     ['…input', 'InputHTMLAttributes', 'Everything else goes to the <input>: value, onChange, autoComplete, inputMode.'],
   ],
   Example: () => {

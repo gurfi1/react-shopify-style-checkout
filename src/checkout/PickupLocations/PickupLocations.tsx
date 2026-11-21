@@ -27,10 +27,10 @@ export function PickupLocations({ locations, value, onChange, name = 'pickup', c
         onChange={onChange}
         options={locations.map(location => ({
           value: location.id,
-          title: location.name,
-          description: location.address,
+          title: <bdi>{location.name}</bdi>,
+          description: <bdi>{location.address}</bdi>,
           detail: location.ready,
-          end: <ChoiceEnd title={labels.free} detail={location.distance} />,
+          end: <ChoiceEnd title={labels.free} detail={location.distance != null ? <bdi>{location.distance}</bdi> : undefined} />,
         }))}
       />
     </div>

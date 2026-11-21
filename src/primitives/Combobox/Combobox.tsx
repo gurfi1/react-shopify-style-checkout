@@ -89,7 +89,8 @@ export function Combobox<T>({
                   onMouseOver={() => setActive(index)}
                   onClick={() => choose(index)}
                 >
-                  {renderOption(option)}
+                  {/* Each suggestion keeps its own direction, whatever the page's. */}
+                  <bdi>{renderOption(option)}</bdi>
                 </li>
               ))}
             </ul>
@@ -103,6 +104,7 @@ export function Combobox<T>({
         ref={ref}
         id={fieldId}
         type="text"
+        dir={input.dir ?? (value !== '' ? 'auto' : undefined)}
         placeholder={label}
         value={value}
         role="combobox"

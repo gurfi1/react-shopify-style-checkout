@@ -41,6 +41,8 @@ export function ContactField({ value, onChange, error, onBlur, flag = '🇺🇸'
       label={labels.contactField}
       value={value}
       error={error}
+      // Emails and phone numbers read left to right in every language.
+      dir="ltr"
       inputMode="email"
       autoComplete="email"
       autoCapitalize="off"

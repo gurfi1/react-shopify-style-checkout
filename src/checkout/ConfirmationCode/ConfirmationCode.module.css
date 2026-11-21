@@ -1,3 +1,5 @@
+/* A code reads left to right in every language. */
+.code { display: inline-block; direction: ltr; unicode-bidi: isolate; }
 .code > span[aria-hidden] { display: inline-block; opacity: 0; }
 .srOnly { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .code[data-active] > span[aria-hidden] { animation: token-in .52s cubic-bezier(.34, 1.42, .64, 1) both; animation-delay: calc(var(--i) * 13ms + var(--delay, 300ms)); }

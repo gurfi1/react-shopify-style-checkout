@@ -21,10 +21,10 @@ export function LineItem({ title, variant, quantity, price, image, className }: 
     <div className={cx(styles.item, className)}>
       <Thumbnail quantity={quantity}>{image}</Thumbnail>
       <div className={styles.itemInfo}>
-        <p>{title}</p>
-        {variant != null && <p className={styles.variant}>{variant}</p>}
+        <p><bdi>{title}</bdi></p>
+        {variant != null && <p className={styles.variant}><bdi>{variant}</bdi></p>}
       </div>
-      <span>{price}</span>
+      <bdi>{price}</bdi>
     </div>
   );
 }

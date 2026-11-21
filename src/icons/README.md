@@ -15,8 +15,8 @@ The icon set, drawn for this project as stroked paths. Each icon takes the curre
 | `InfoIcon` | Question mark in a circle. Tooltip trigger. |
 | `LockIcon` | Padlock. Card number field. |
 | `SearchIcon` | Magnifier. Address field. |
-| `TruckIcon` | Delivery truck. "Ship". |
+| `TruckIcon` | Delivery truck. "Ship". Mirrored in right-to-left pages, so it drives the way the text reads. |
 | `StoreIcon` | Shop front. "Pick up". |
 | `AlertIcon` | Exclamation mark in a circle. Error banner. |
 | `TickIcon` | Tick. The same stroke the checkbox draws. |
-| `RedirectIllustration` | Browser window with an arrow leaving it. Redirect-style payment methods. |
+| `RedirectIllustration` | Browser window with an arrow leaving it. Redirect-style payment methods. Mirrored in right-to-left pages. |

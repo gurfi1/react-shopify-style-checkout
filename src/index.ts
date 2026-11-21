@@ -67,4 +67,5 @@ export * from './lib/motion';
 export * from './lib/totals';
 export * from './lib/validate';
 export { defaultLabels, type Labels } from './labels';
+export { he } from './locales/he';
 export type * from './types';

@@ -60,6 +60,20 @@ if (only !== 'loop') {
   await page.screenshot(join(out, 'components.png'));
   page.close();
 
+  // The same checkout in Hebrew, right to left.
+  const hebrew = await openPage({ width: 1280, height: 800, scale: 2 });
+  await hebrew.goto(url + '?lang=he');
+  await sleep(2500);
+  await hebrew.evaluate(helpers);
+  await hebrew.evaluate(`setValue('email', 'ada@example.com'); setValue('first', 'עדה'); setValue('last', 'לאבלייס'); setValue('city', 'תל אביב-יפו'); setValue('postal', '6688101'); setValue('address1', 'שדרות רוטשילד 12'); 1`);
+  await sleep(500);
+  await hebrew.evaluate(`document.getElementById('address1').dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); 1`);
+  await sleep(2000);
+  await hebrew.evaluate(`window.scrollTo(0, 0); document.activeElement.blur(); 1`);
+  await sleep(300);
+  await hebrew.screenshot(join(out, 'checkout-rtl.png'));
+  hebrew.close();
+
   const phone = await openPage({ width: 390, height: 844, scale: 2, mobile: true });
   await phone.goto(url);
   await sleep(2800);

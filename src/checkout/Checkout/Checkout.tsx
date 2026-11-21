@@ -53,6 +53,8 @@ export type CheckoutProps = {
   cartHref?: string;
   /** Brand colour. Defaults to the reference blue. */
   accent?: string;
+  /** Text direction. Leave out to follow the page; set "rtl" for Hebrew, Arabic and other right-to-left languages. */
+  dir?: 'ltr' | 'rtl';
   /** BCP 47 locale for prices. */
   locale?: string;
   /** ISO 4217 currency code. */
@@ -83,9 +85,9 @@ export type CheckoutProps = {
 };
 
 /** The whole one-page checkout: form, order summary, and the thank-you page it turns into. */
-export function Checkout({ accent, labels, locale, currency, ...page }: CheckoutProps) {
+export function Checkout({ accent, dir, labels, locale, currency, ...page }: CheckoutProps) {
   return (
-    <Theme accent={accent}>
+    <Theme accent={accent} dir={dir}>
       <CheckoutProvider labels={labels} locale={locale} currency={currency}>
         <CheckoutPage labels={labels} {...page} />
       </CheckoutProvider>
@@ -99,7 +101,7 @@ function CheckoutPage({
   api, items, loading = false, subtotal: givenSubtotal, storeName, logo, homeHref, cartHref, labels: labelOverrides,
   countries, defaultCountry, pickupLocations = [], paymentMethods, expressButtons, policies,
   signInHref, helpHref, footerNote, onComplete, onContinueShopping,
-}: Omit<CheckoutProps, 'accent' | 'locale' | 'currency'>) {
+}: Omit<CheckoutProps, 'accent' | 'dir' | 'locale' | 'currency'>) {
   const { labels, money } = useCheckoutSettings();
   const subtotal = givenSubtotal ?? items.reduce((sum, item) => sum + item.price, 0);
   const state = useCheckout({ api, subtotal, countries, defaultCountry, pickupLocations, paymentMethods, labels: labelOverrides });
@@ -249,7 +251,8 @@ function CheckoutPage({
       : { title: labels.shippingAddress, lines: state.shippingLines },
     { title: state.isPickup ? labels.pickup : labels.shippingMethod, lines: [state.isPickup ? labels.pickupInStore : state.rate?.name] },
   ];
-  const right: OrderDetail[] = [{ title: labels.paymentMethod, lines: [`${paidWith} · ${money(state.totals.total)}`] }];
+  // Wording first, then the amount on its own, so the sentence follows the page's direction whatever the card brand is called.
+  const right: OrderDetail[] = [{ title: labels.paymentMethod, lines: [<>{paidWith} · <bdi>{money(state.totals.total)}</bdi></>] }];
   if (state.needsBilling) right.push({ title: labels.billingAddress, lines: state.billingLines });
   else if (!state.isPickup) right.push({ title: labels.billingAddress, lines: state.shippingLines });
   const mapPlace = state.isPickup

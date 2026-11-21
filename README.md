@@ -8,9 +8,9 @@ A one-page checkout for React, modelled on Shopify's. Take the whole page, one b
 
 ![A 17-second loop: the page loads from a skeleton, an address is chosen from suggestions, shipping rates arrive, the card is entered, and the page turns into the order confirmation](docs/img/demo.gif)
 
-| Checkout | Thank-you page | On a phone |
-|---|---|---|
-| ![The checkout on a wide screen, form on the left and order summary on the right](docs/img/checkout-desktop.png) | ![The thank-you page with a tick, a map card and the order details](docs/img/thank-you.png) | <img src="docs/img/checkout-mobile.png" alt="The checkout in one column on a phone" width="170"> |
+| Checkout | Thank-you page | Right to left, in Hebrew | On a phone |
+|---|---|---|---|
+| ![The checkout on a wide screen, form on the left and order summary on the right](docs/img/checkout-desktop.png) | ![The thank-you page with a tick, a map card and the order details](docs/img/thank-you.png) | ![The same checkout in Hebrew, mirrored: form on the right, order summary on the left](docs/img/checkout-rtl.png) | <img src="docs/img/checkout-mobile.png" alt="The checkout in one column on a phone" width="150"> |
 
 ## What you get
 
@@ -114,7 +114,15 @@ Loading states, races between slow answers, and "Pay pressed before rates arrive
 ```
 
 - [docs/theming.md](docs/theming.md): every token for colour, corners, shadows and timing.
-- [docs/wording-and-locale.md](docs/wording-and-locale.md): translating, currencies, per-country address wording.
+- [docs/wording-and-locale.md](docs/wording-and-locale.md): translating, currencies, per-country address wording, and right-to-left languages.
+
+Right to left works out of the box, and Hebrew wording is included:
+
+```tsx
+import { Checkout, he } from './checkout-kit';
+
+<Checkout dir="rtl" labels={he} locale="he-IL" currency="ILS" … />
+```
 
 ## Components
 
@@ -173,7 +181,7 @@ Each name links to a folder with the component, its README and its demo.
 | [Checkout](src/checkout/Checkout) | Everything assembled into the page: layout, form, order summary, and the thank-you page it turns into. |
 <!-- components:end -->
 
-Hooks and helpers: [`src/hooks`](src/hooks) · [`src/lib`](src/lib) · [`src/icons`](src/icons) · [`src/theme`](src/theme)
+Hooks and helpers: [`src/hooks`](src/hooks) · [`src/lib`](src/lib) · [`src/icons`](src/icons) · [`src/theme`](src/theme) · [`src/locales`](src/locales)
 
 ## What it is not
 
@@ -193,7 +201,7 @@ Hooks and helpers: [`src/hooks`](src/hooks) · [`src/lib`](src/lib) · [`src/ico
 | Keyboard only | An order can be placed without a mouse |
 | Reduced motion | Honoured; all motion drops to 1ms |
 | Screen readers | **Not tested**, though roles and names are in place |
-| Right-to-left | Written for, **not tested** |
+| Right-to-left | Tested with Hebrew in Chromium. The demo has a [Hebrew mode](https://gurfi1.github.io/react-shopify-style-checkout/?lang=he). Arabic is **not tested** |
 
 Details, and four known gaps, are in [docs/accessibility.md](docs/accessibility.md).
 
@@ -205,7 +213,8 @@ The layout, measurements and timings are modelled on Shopify's one-page checkout
 
 Issues and pull requests are welcome, from anyone. Good places to start:
 
-- Try it in Firefox, desktop Safari, with a screen reader, or in a right-to-left language, and report what you find.
+- Try it in Firefox, desktop Safari, with a screen reader, or in Arabic, and report what you find.
+- Translate the labels into your language. Hebrew is in [`src/locales`](src/locales) as the model.
 - Fix one of the [known accessibility gaps](docs/accessibility.md#known-gaps).
 - Add component tests. The logic is tested; the components were checked by hand.
 - Add a country's address format.

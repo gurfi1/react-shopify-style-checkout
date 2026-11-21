@@ -50,3 +50,6 @@
     transition-duration: 1ms !important; transition-delay: 0ms !important;
   }
 }
+
+/* Icons that show movement (a truck, an arrow) face the reading direction. */
+:global([dir="rtl"]) .theme [data-mirror-in-rtl], .theme[dir="rtl"] [data-mirror-in-rtl] { transform: scaleX(-1); }

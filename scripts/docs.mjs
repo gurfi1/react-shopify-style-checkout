@@ -151,6 +151,7 @@ folderIndexPage('checkout', 'Checkout blocks', 'Larger pieces of a checkout, eac
 
 listingPage(join(SRC, 'hooks'), 'Hooks', 'The checkout\'s behaviour with no interface attached. `useCheckout` is the whole page\'s state and rules; the others are the smaller pieces it and the components are built from.', readdirSync(join(SRC, 'hooks')).filter(file => file.endsWith('.ts')).sort());
 listingPage(join(SRC, 'lib'), 'Logic', 'Plain functions with no React in them: formatting, validation, address formats, totals. They are covered by the tests in `lib.test.ts`.', readdirSync(join(SRC, 'lib')).filter(file => file.endsWith('.ts') && !file.endsWith('.test.ts')).sort());
+listingPage(join(SRC, 'locales'), 'Locales', 'Complete sets of wording in other languages. Each one is typed as `Labels`, so the compiler reports a label that is missing. Pass one as `labels`; [docs/wording-and-locale.md](../../docs/wording-and-locale.md) explains how, and how to add a language.', readdirSync(join(SRC, 'locales')).filter(file => file.endsWith('.ts') && !file.endsWith('.test.ts')).sort());
 listingPage(join(SRC, 'icons'), 'Icons', 'The icon set, drawn for this project as stroked paths. Each icon takes the current text colour and a `size` in pixels.', ['index.tsx']);
 listingPage(join(SRC, 'theme'), 'Theme', 'Design tokens and base type. Every other component expects a `Theme` above it. The tokens themselves are in `Theme.module.css`; [docs/theming.md](../../docs/theming.md) lists them.', ['Theme.tsx']);
 

@@ -2,6 +2,19 @@
 
 Notable changes to this project. Versions follow [semantic versioning](https://semver.org); while the version is below 1.0, any release may change props.
 
+## Unreleased
+
+### Added
+
+- **Right-to-left support.** `dir="rtl"` on `Checkout` or `Theme` (or on the page) mirrors the layout. Emails, phone numbers and card fields stay left to right; other typed text takes its direction from what is typed; names, addresses, prices and codes are isolated so surrounding text cannot reorder them; sideways motion and the two directional icons reverse.
+- **Hebrew labels**, exported as `he`, and a Hebrew mode in the demo at `?lang=he`. `?dir=rtl` mirrors the English demo for testing layout alone.
+- `dir` prop on `Checkout`.
+
+### Fixed
+
+- The "Name on card" error stayed visible after the name was filled in from the shipping name.
+- A discount's minus sign is now placed by the browser's number formatting, so it lands on the correct side in every locale.
+
 ## 0.1.0
 
 The first release.

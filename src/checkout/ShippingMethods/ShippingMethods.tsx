@@ -49,9 +49,9 @@ export function ShippingMethods({ status, rates, value, onChange, name = 'shippi
           onChange={onChange}
           options={rates.map(rate => ({
             value: rate.id,
-            title: rate.name,
-            description: rate.eta,
-            end: <b>{rate.price ? money(rate.price) : labels.free}</b>,
+            title: <bdi>{rate.name}</bdi>,
+            description: <bdi>{rate.eta}</bdi>,
+            end: <b>{rate.price ? <bdi>{money(rate.price)}</bdi> : labels.free}</b>,
           }))}
         />
       )}
