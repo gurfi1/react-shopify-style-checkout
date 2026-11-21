@@ -1,0 +1,35 @@
+.view { display: flex; flex-direction: column; flex: 1; animation: fade-in .4s ease .1s both; }
+.view[data-arriving] { animation: fade-in var(--d-base) var(--ease) both; }
+.view[data-exiting] { animation: view-exit var(--d-slow) ease-in forwards; }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes view-exit { to { opacity: 0; transform: translateY(28px); filter: blur(2px); } }
+
+/* Read by screen readers, not shown. */
+.srOnly { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+.section { margin-top: 32px; }
+.section[data-tight] { margin-top: 20px; }
+.section[data-first] { margin-top: 0; }
+.sectionHead { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+.sectionNote { margin: -8px 0 14px; color: var(--text-subdued); }
+.sub { margin-top: 24px; }
+.sub > h3 { margin-bottom: 12px; }
+
+.panes { margin-top: 10px; }
+.save { margin-top: 10px; }
+.billingHeading { margin: 14px 0 12px; }
+.pay { margin-top: 24px; }
+.footer { margin-top: auto; padding-top: 60px; }
+
+/* The second order summary above the pay button, on small screens only. */
+.recap > h2 { margin-bottom: 14px; }
+@media (min-width: 1000px) { .recap { display: none; } }
+
+/* Where the big tick is drawn before it flies to the heading. */
+.stage { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; pointer-events: none; }
+
+/* Loading: the skeleton and the real content share a box, so one can fade out over the other. */
+.swap { position: relative; display: flex; flex-direction: column; flex: 1; }
+.leaving { position: absolute; inset: 0; pointer-events: none; animation: fade-out var(--d-fast) linear forwards; }
+.arriving { animation: fade-in var(--d-base) var(--ease) both; }
+@keyframes fade-out { to { opacity: 0; } }

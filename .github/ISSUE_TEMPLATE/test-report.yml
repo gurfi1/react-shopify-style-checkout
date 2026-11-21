@@ -1,0 +1,21 @@
+name: Test report
+description: You tried it in a browser, device or screen reader and want to say how it went
+labels: [testing]
+body:
+  - type: markdown
+    attributes:
+      value: Reports of "it works" are as useful as reports of problems. Thank you.
+  - type: input
+    id: setup
+    attributes:
+      label: What you tested with
+      description: Browser and version, device, and any assistive technology or language.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What you found
+      description: What worked, what did not. Screenshots welcome.
+    validations:
+      required: true

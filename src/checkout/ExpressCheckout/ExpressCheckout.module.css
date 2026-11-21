@@ -1,0 +1,18 @@
+.express { text-align: center; }
+.label { margin: 0 0 12px; color: var(--text-subdued); }
+.buttons { display: grid; grid-template-columns: repeat(var(--count, 3), 1fr); gap: 10px; }
+.buttons button {
+  height: 48px; border: 0; border-radius: var(--radius); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+  background: var(--express-bg, #000); color: var(--express-fg, #fff);
+  outline: 0 solid var(--ring);
+  transition: filter var(--d-base) var(--ease), background-color var(--d-slow) ease, color var(--d-slow) ease, outline-width var(--d-fast) var(--ease-out);
+}
+.buttons button:hover { filter: brightness(.92); }
+.buttons button:focus-visible { outline-width: 3px; }
+/* A logo cannot be hidden by making the text transparent, so it fades with opacity instead. */
+.content { display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; transition: opacity var(--d-slow) ease; }
+.buttons[data-loading] .content { opacity: 0; }
+.buttons[data-loading] button { background: var(--skeleton); color: transparent; pointer-events: none; animation: skel-pulse 1.35s var(--ease) infinite; }
+.divider { margin-top: 20px; }
+@keyframes skel-pulse { 50% { opacity: .5; } }
+@media (max-width: 479px) { .buttons { grid-template-columns: 1fr; } }

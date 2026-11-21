@@ -1,0 +1,21 @@
+name: Idea or component request
+description: Suggest a component, a prop, or a change
+labels: [idea]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What are you trying to do
+      description: The situation you are in, before the solution you have in mind.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you would like
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Would you like to work on it
+      options:
+        - label: I can open a pull request for this

@@ -1,0 +1,7 @@
+/* Animated open and close: grid rows 0fr to 1fr. Content is clipped only while moving, so focus rings and tooltips are never cut off. */
+.collapsible { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--d-base) var(--ease); }
+.collapsible[data-open] { grid-template-rows: 1fr; }
+.inner { min-height: 0; overflow: hidden; transition: visibility 0s linear 0s; }
+.collapsible:not([data-open]) > .inner { visibility: hidden; transition-delay: var(--d-base); }
+.collapsible[data-open] > .inner { animation: clip-content var(--d-slow) linear forwards; }
+@keyframes clip-content { 0%, 99% { overflow: hidden; } 100% { overflow: visible; } }

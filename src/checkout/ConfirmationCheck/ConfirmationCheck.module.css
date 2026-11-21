@@ -1,0 +1,15 @@
+.wrap { display: block; width: var(--size, 50px); height: var(--size, 50px); }
+.icon { display: block; width: 100%; height: 100%; fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
+.icon circle { stroke-width: 2; }
+.icon path { stroke-width: 2.5; }
+
+/* Drawn: the circle grows from 30%, turns 175° and thins; then the tick draws inside it. */
+.wrap[data-animated] .icon { animation: stage-in .4s cubic-bezier(.22, 1, .36, 1) both; }
+.wrap[data-animated] circle { transform-box: fill-box; transform-origin: center; animation: circle-draw .54s cubic-bezier(.4, 0, .8, .6) both; }
+.wrap[data-animated] path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .38s cubic-bezier(0, 0, .3, 1) .54s both; }
+@keyframes stage-in { from { transform: scale(.1); } }
+@keyframes circle-draw {
+  from { stroke-dasharray: .01 .99; stroke-width: 9; transform: rotate(0deg) scale(.3); }
+  to { stroke-dasharray: 1 0; stroke-width: 2; transform: rotate(175.27deg) scale(1); }
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }

@@ -1,0 +1,3 @@
+.redirect { padding: 24px 40px; text-align: center; color: var(--text-subdued); }
+.redirect svg { display: block; margin: 0 auto 14px; }
+@media (max-width: 479px) { .redirect { padding-inline: 18px; } }

@@ -1,0 +1,15 @@
+.badges { display: inline-flex; align-items: center; gap: 4px; }
+/* Each logo brings its own 38x24 frame and border. */
+.logo { display: block; flex: none; width: 38px; height: 24px; transition: opacity var(--d-base) var(--ease); }
+.logo[data-dim] { opacity: .25; }
+/* The "+4" badge, framed to sit beside them. */
+.badge {
+  display: inline-grid; grid-auto-flow: column; place-items: center; width: 38px; height: 24px; margin: 0; padding: 0;
+  border: 1px solid var(--border); border-radius: 4px; background: #fff; font: 800 9px/1 inherit; color: #1a1f71;
+  transition: opacity var(--d-base) var(--ease);
+}
+.moreButton { color: var(--text-subdued); font-size: 11px; font-weight: 600; cursor: default; outline: 0 solid var(--ring); }
+.moreButton:hover { color: var(--text); }
+.moreButton:focus-visible { outline-width: 3px; }
+.more { display: flex; gap: 4px; }
+.more img { display: block; }

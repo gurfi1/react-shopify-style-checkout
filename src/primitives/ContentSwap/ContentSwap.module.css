@@ -1,0 +1,6 @@
+/* Content that swaps in place: a quick fade plus a 1% sideways slide. */
+.in { animation: fade-in var(--d-fast) linear both, slide-from-start var(--d-slow) var(--ease-out) both; }
+.inEnd { animation: fade-in var(--d-fast) linear both, slide-from-end var(--d-slow) var(--ease-out) both; }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes slide-from-start { from { transform: translateX(-1%); } }
+@keyframes slide-from-end { from { transform: translateX(1%); } }

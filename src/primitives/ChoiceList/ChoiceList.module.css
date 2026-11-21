@@ -1,0 +1,18 @@
+.choice {
+  position: relative; display: grid; grid-template-columns: 18px 1fr auto; gap: 10px; align-items: start;
+  margin-top: -1px; padding: 14px; background: var(--bg); border: 1px solid var(--border); cursor: pointer;
+  transition: background-color var(--d-fast) var(--ease), border-color var(--d-fast) var(--ease);
+}
+.choice[data-one-line] { align-items: center; }
+.choice[data-selected] { z-index: 1; background: var(--accent-subdued); border-color: var(--accent); }
+.main, .end { display: flex; flex-direction: column; min-width: 0; }
+.end { align-items: flex-end; text-align: end; }
+.subdued { color: var(--text-subdued); }
+
+/* The list is one rounded box: only the first and last rows carry corners. */
+.list > :first-child, .list > :first-child > .choice { margin-top: 0; border-start-start-radius: var(--radius); border-start-end-radius: var(--radius); }
+.list > .choice:last-child,
+.list > .item:last-child:not([data-panel-open]) > .choice,
+.list > .item:last-child .panel { border-end-start-radius: var(--radius); border-end-end-radius: var(--radius); }
+
+.panel { padding: 14px; background: var(--bg-subdued); border: 1px solid var(--border); border-top: 0; }

@@ -1,0 +1,13 @@
+.pop {
+  position: absolute; top: calc(100% + 8px); inset-inline: 0; z-index: 30; overflow: hidden;
+  border-radius: var(--radius); background: #fff; box-shadow: var(--shadow-pop);
+  animation: pop-down var(--d-base) var(--ease-spring) both;
+}
+@keyframes pop-down { from { opacity: 0; transform: translateY(-8px); } }
+.head { display: flex; align-items: center; justify-content: space-between; padding: 10px 10px 6px; color: var(--text-subdued); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.close { display: grid; place-items: center; width: 22px; height: 22px; margin: 0; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--text); cursor: pointer; }
+.list { margin: 0; padding: 0; list-style: none; }
+.list li { padding: 10px; color: var(--text-subdued); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+.list li strong { color: var(--text); }
+.list li[data-active] { background: var(--accent); color: #fff; }
+.list li[data-active] strong { color: #fff; }

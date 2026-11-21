@@ -1,0 +1,7 @@
+.radio {
+  appearance: none; flex: none; width: 18px; height: 18px; margin: 0; border: 1px solid var(--border); border-radius: 50%;
+  background: #fff; cursor: pointer; outline: 0 solid var(--ring);
+  transition: border-width var(--d-fast) var(--ease-out), border-color var(--d-fast) var(--ease-out), outline-width var(--d-fast) var(--ease-out);
+}
+.radio:checked { border: 6px solid var(--accent); }
+.radio:focus-visible { outline-width: 3px; }

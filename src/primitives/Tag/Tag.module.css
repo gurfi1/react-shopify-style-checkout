@@ -1,0 +1,9 @@
+.tag {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 6px 6px 10px; border-radius: var(--radius-sm);
+  background: #e6e6e6; font-size: 12px; font-weight: 600;
+  animation: tag-pop .4s ease both;
+}
+.tag[data-static] { padding-inline-end: 10px; }
+.tag button { display: grid; place-items: center; width: 18px; height: 18px; margin: 0; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--text-subdued); cursor: pointer; }
+.tag button:hover { color: var(--text); }
+@keyframes tag-pop { 0% { opacity: 0; transform: scale(.5); } 40% { transform: scale(1.1); } 100% { opacity: 1; transform: none; } }

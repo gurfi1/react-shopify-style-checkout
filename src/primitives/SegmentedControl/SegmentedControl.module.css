@@ -1,0 +1,17 @@
+/* A track with a white pill that slides under the selected option. */
+.segmented { position: relative; display: grid; grid-template-columns: repeat(var(--count), 1fr); padding: 4px; border-radius: var(--radius); background: var(--bg-subdued); }
+.pill {
+  position: absolute; inset-block: 4px; inset-inline-start: 4px; width: calc((100% - 8px) / var(--count));
+  border-radius: var(--radius-sm); background: #fff; box-shadow: var(--shadow-xs);
+  transform: translateX(calc(var(--index) * 100%)); transition: transform var(--d-fast) var(--ease-out);
+}
+:global([dir="rtl"]) .pill { transform: translateX(calc(var(--index) * -100%)); }
+.segmented label { position: relative; }
+.segmented input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.segmented label > span {
+  display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border-radius: var(--radius-sm);
+  font-weight: 600; color: var(--text-subdued); outline: 0 solid var(--ring);
+  transition: color var(--d-fast) var(--ease), outline-width var(--d-fast) var(--ease-out);
+}
+.segmented input:checked + span { color: var(--text); }
+.segmented input:focus-visible + span { outline-width: 3px; }

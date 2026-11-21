@@ -1,0 +1,24 @@
+.button {
+  position: relative; display: inline-grid; place-items: center; min-height: 50px; margin: 0; padding: 14px;
+  border: 1px solid transparent; border-radius: var(--radius); font: inherit; font-weight: 600; cursor: pointer;
+  outline: 0 solid var(--ring);
+  transition: background-color var(--d-base) var(--ease), border-color var(--d-base) var(--ease), color var(--d-base) var(--ease), outline-width var(--d-fast) var(--ease-out);
+}
+.button:focus-visible { outline-width: 3px; }
+.fullWidth { width: 100%; }
+
+.primary { background: var(--accent); color: #fff; }
+.primary:hover { background: var(--accent-hover); }
+
+/* The apply button: grey and inert until there is something to apply, then accent. */
+.quiet { min-height: 49px; padding: 0 16px; background: var(--bg-subdued); border-color: var(--border); color: var(--text-subdued); }
+.quiet:disabled { cursor: default; }
+.quiet:not(:disabled) { background: var(--accent); border-color: var(--accent); color: #fff; }
+.quiet:not(:disabled):hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+/* Loading: the label fades out and the spinner fades in, in place. */
+.label { transition: opacity var(--d-fast) var(--ease-out); }
+.spinner { position: absolute; opacity: 0; transition: opacity var(--d-fast) var(--ease-out); }
+.button[data-loading] { pointer-events: none; }
+.button[data-loading] .label, .label[data-swapping] { opacity: 0; }
+.button[data-loading] .spinner { opacity: 1; }

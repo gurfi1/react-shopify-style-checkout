@@ -1,0 +1,7 @@
+.stack > * + * { margin-top: var(--gap, 10px); }
+/* The grid's own wrapper is the container, so a three-column row stacks when the form itself is narrow. */
+.container { container-type: inline-size; }
+.grid { display: grid; gap: 10px; }
+.columns2 { grid-template-columns: 1fr 1fr; }
+.columns3 { grid-template-columns: 1fr 1fr 1fr; }
+@container (inline-size < 420px) { .columns3 { grid-template-columns: 1fr; } }

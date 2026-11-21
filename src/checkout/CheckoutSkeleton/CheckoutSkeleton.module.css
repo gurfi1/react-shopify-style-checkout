@@ -1,0 +1,33 @@
+/* The page-load placeholder. The shell shows first; these shapes fade in a beat later. */
+.skeleton, .summary { animation: fade-in var(--d-fast) linear 160ms both; }
+@keyframes fade-in { from { opacity: 0; } }
+
+/* Form column: an express row, then sections of a heading and two lines. */
+.skeleton .label { width: 140px; height: 10px; margin: 5px auto 20px; border-radius: 5px; }
+.buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.skeleton .button { height: 48px; border-radius: var(--radius); }
+.rule { height: 1px; margin-top: 38px; background: var(--border); }
+/* The first section sits lower under the express row's rule; later ones are tighter. */
+.section { padding-top: 25px; }
+.buttons + .rule + .section { padding-top: 45px; }
+.section + .rule { margin-top: 24px; }
+.section:first-child { padding-top: 0; }
+.skeleton .heading { width: 90px; height: 14px; border-radius: 7px; }
+.skeleton .line { height: 10px; margin-top: 22px; border-radius: 5px; }
+.skeleton .line + .line { margin-top: 12px; }
+@media (max-width: 479px) { .buttons { grid-template-columns: 1fr; } }
+
+/* Summary column: one product, three rows, the total. */
+.item { display: flex; align-items: flex-start; gap: 15px; }
+.item + .item { margin-top: 14px; }
+.summary .thumb { flex: none; width: 64px; height: 64px; border-radius: var(--radius); }
+.itemText { flex: 1; padding-top: 17px; }
+.summary .title { width: 120px; height: 10px; border-radius: 5px; }
+.summary .variant { width: 60px; height: 10px; margin-top: 8px; border-radius: 5px; }
+.summary .price { width: 60px; height: 10px; margin-top: 17px; border-radius: 5px; }
+.rows { margin-top: 24px; }
+.row { display: flex; justify-content: space-between; }
+.row + .row { margin-top: 16px; }
+.summary .cell { width: 60px; height: 10px; border-radius: 5px; }
+.row.total { margin-top: 19px; }
+.summary .totalCell { width: 90px; height: 14px; border-radius: 7px; }

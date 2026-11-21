@@ -1,0 +1,34 @@
+/* Placeholder first; the small label fades in once the field has a value. */
+.wrap { position: relative; min-width: 0; }
+.field {
+  position: relative; display: flex; align-items: center;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+  outline: 0 solid var(--ring);
+  transition: border-color var(--d-base) var(--ease), box-shadow var(--d-fast) var(--ease-out), outline-width var(--d-fast) var(--ease-out);
+}
+.field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 .5px var(--accent); outline-width: 3px; }
+.field input, .field select {
+  flex: 1; min-width: 0; width: 100%; height: 47px; margin: 0; padding: 13.5px 10px;
+  border: 0; border-radius: inherit; background: transparent; outline: 0;
+  font: inherit; color: var(--text); appearance: none; text-overflow: ellipsis;
+  transition: padding var(--d-base) var(--ease);
+}
+.field select { padding-inline-end: 30px; cursor: pointer; }
+.field select:not([data-has-value]) { color: var(--text-subdued); }
+.field input::placeholder { color: var(--text-subdued); opacity: 1; }
+.field label {
+  position: absolute; top: 6px; inset-inline-start: 11px; max-width: calc(100% - 22px);
+  font-size: 12px; color: var(--text-subdued); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  pointer-events: none; opacity: 0; transform: translateY(3px);
+  transition: opacity var(--d-base) var(--ease), transform var(--d-base) var(--ease);
+}
+.field input:not(:placeholder-shown), .field input:-webkit-autofill, .field select[data-has-value] { padding-block: 21px 6px; }
+.field input:not(:placeholder-shown) ~ label, .field input:-webkit-autofill ~ label, .field select[data-has-value] ~ label { opacity: 1; transform: none; }
+.chevron { position: absolute; inset-inline-end: 12px; color: var(--text-subdued); pointer-events: none; }
+.accessory { display: flex; align-items: center; gap: 4px; padding-inline-end: 10px; color: var(--text-subdued); }
+.wrap[data-error] .field { border-color: var(--critical); box-shadow: 0 0 0 .5px var(--critical); outline-color: color-mix(in srgb, var(--critical) 30%, transparent); }
+
+/* iOS Safari zooms the page when a focused field's text is under 16px. On touch devices the text is 16px, which stops that. */
+@media (hover: none) and (pointer: coarse) {
+  .field input, .field select { font-size: 16px; }
+}

@@ -1,0 +1,52 @@
+/* Design tokens. Every component reads these and nothing else. Change --accent to re-colour everything. */
+.theme {
+  --accent: #334fb4;
+  --accent-hover: color-mix(in srgb, var(--accent) 72%, #000);
+  --accent-subdued: color-mix(in srgb, var(--accent) 5%, #fff);
+  --ring: color-mix(in srgb, var(--accent) 30%, transparent);
+  --bg: #fff;
+  --summary-bg: #f5f5f5;
+  --bg-subdued: #f5f5f5;
+  --text: #000;
+  --text-subdued: #707070;
+  --border: #dedede;
+  --critical: #d91c1c;
+  --skeleton: #e6e6e6;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --shadow-xs: 0 0 0 .5px rgba(0, 0, 0, .05), 0 1px 3px rgba(0, 0, 0, .04);
+  --shadow-pop: 0 0 0 .5px rgba(0, 0, 0, .06), 0 2px 5px rgba(0, 0, 0, .04), 0 4px 18px rgba(0, 0, 0, .1);
+  --d-faster: 89ms;
+  --d-fast: 133ms;
+  --d-base: 200ms;
+  --d-slow: 300ms;
+  --d-slower: 450ms;
+  --d-slowest: 675ms;
+  --ease: ease-in-out;
+  --ease-out: cubic-bezier(.3, .5, .5, 1);
+  --ease-spring: cubic-bezier(.3, 0, 0, 1);
+
+  color: var(--text);
+  font: 14px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* A grey surface, such as the order summary, uses a slightly darker scheme. */
+.subdued { --bg-subdued: #ededed; --text-subdued: #666; --border: #d6d6d6; --skeleton: #d6d6d6; }
+
+/* The small reset the components assume. It reaches only what is inside a Theme. */
+.theme, .theme * { box-sizing: border-box; }
+.theme [hidden] { display: none !important; }
+.theme :where(h1, h2, h3, h4, p, ul) { margin: 0; padding: 0; }
+.theme :where(ul) { list-style: none; }
+.theme :where(b, strong) { font-weight: 600; }
+.theme :where(svg) { flex: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme *, .theme *::before, .theme *::after {
+    animation-duration: 1ms !important; animation-delay: 0ms !important;
+    transition-duration: 1ms !important; transition-delay: 0ms !important;
+  }
+}

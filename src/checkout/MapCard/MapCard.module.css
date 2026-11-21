@@ -1,0 +1,22 @@
+.map { position: relative; height: 180px; overflow: hidden; border-radius: 11px 11px 0 0; background: #e9edf1; }
+.art {
+  position: absolute; inset: -12%;
+  background:
+    linear-gradient(115deg, transparent 47.5%, #fff 47.5% 49.5%, transparent 49.5%),
+    linear-gradient(25deg, transparent 38%, #fff 38% 39.6%, transparent 39.6%),
+    linear-gradient(25deg, transparent 68%, #fff 68% 69.2%, transparent 69.2%),
+    linear-gradient(100deg, transparent 20%, #fff 20% 21%, transparent 21%),
+    linear-gradient(100deg, transparent 80%, #fff 80% 81%, transparent 81%),
+    radial-gradient(ellipse 26% 30% at 78% 24%, #d3e6d0 0 99%, transparent 100%),
+    linear-gradient(160deg, transparent 8%, #cfe0f1 8% 16%, transparent 16%);
+}
+.pin { position: absolute; left: 50%; top: 62%; width: 22px; height: 22px; margin: -11px; border: 4px solid #fff; border-radius: 50%; background: var(--accent); box-shadow: 0 2px 6px rgba(0, 0, 0, .25); }
+.callout { position: absolute; left: 50%; bottom: calc(38% + 20px); transform: translateX(-50%); padding: 8px 12px; border-radius: var(--radius); background: #fff; box-shadow: var(--shadow-pop); font-size: 12px; text-align: center; white-space: nowrap; }
+.callout b { display: block; font-size: 14px; }
+.label { color: var(--text-subdued); }
+.map[data-active] .art { animation: map-reveal .7s cubic-bezier(.165, .84, .44, 1) .3s both; }
+.map[data-active] .pin { animation: pin-pop .45s cubic-bezier(.34, 1.56, .64, 1) .75s both; }
+.map[data-active] .callout { animation: callout-in var(--d-slow) var(--ease-out) .95s both; }
+@keyframes map-reveal { from { opacity: 0; transform: scale(1.12); } }
+@keyframes pin-pop { from { opacity: 0; transform: scale(.5); } }
+@keyframes callout-in { from { opacity: 0; transform: translate(-50%, 6px); } }

@@ -1,0 +1,4 @@
+.skeleton { display: block; border-radius: 6px; background: var(--skeleton); animation: skel-pulse 1.35s var(--ease) infinite; }
+.pill { display: inline-block; width: 46px; height: 12px; vertical-align: middle; }
+.circle { width: 18px; height: 18px; border-radius: 50%; }
+@keyframes skel-pulse { 50% { opacity: .5; } }

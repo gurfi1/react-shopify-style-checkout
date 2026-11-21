@@ -1,0 +1,6 @@
+.empty { padding: 16px; border-radius: var(--radius); background: var(--bg-subdued); color: var(--text-subdued); text-align: center; }
+.skeleton { border: 1px solid var(--border); border-radius: var(--radius); }
+.skeleton > div { display: flex; align-items: center; gap: 10px; padding: 24px 14px; }
+.skeleton > div + div { border-top: 1px solid var(--border); }
+.name { width: 38%; height: 12px; }
+.price { width: 46px; height: 12px; margin-inline-start: auto; }

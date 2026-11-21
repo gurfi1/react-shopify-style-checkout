@@ -1,0 +1,49 @@
+.shell { background: var(--bg); }
+.header { padding: 20px; background: var(--bg); border-bottom: 1px solid var(--border); }
+.headerInner { display: flex; align-items: center; justify-content: space-between; max-width: 980px; min-height: 40px; margin: 0 auto; }
+.main { width: 100%; max-width: 580px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; }
+.summaryColumn { background: var(--summary-bg); }
+.summary { padding: 20px; max-width: 580px; margin: 0 auto; }
+
+/* One column: the summary collapses behind its bar. */
+@media (max-width: 999px) {
+  .summaryColumn { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--d-base) var(--ease); }
+  .summaryColumn[data-open] { grid-template-rows: 1fr; border-bottom: 1px solid var(--border); }
+  .summaryClip { min-height: 0; overflow: hidden; transition: visibility 0s linear 0s; }
+  .summaryColumn:not([data-open]) .summaryClip { visibility: hidden; transition-delay: var(--d-base); }
+}
+
+/* Two columns: the divider sits 50px right of centre and the summary sticks. */
+@media (min-width: 1000px) {
+  .shell { display: grid; grid-template-columns: calc(50% + 50px) 1fr; grid-template-rows: auto 1fr; min-height: 100vh; }
+  .header { grid-column: 1 / -1; padding: 20px 40px; }
+  .bar { display: none; }
+  .mainColumn { grid-column: 1; grid-row: 2; display: flex; justify-content: flex-end; }
+  .main { margin: 0; padding: 40px; }
+  .summaryColumn { grid-column: 2; grid-row: 2; border-inline-start: 1px solid var(--border); }
+  .summaryClip { height: 100%; }
+  .summary { position: sticky; top: 0; max-width: 480px; margin: 0; padding: 40px; animation: fade-in .4s ease .1s both; }
+
+  /* Order-confirmed entrance: one centred column that then splits back into two. */
+  .shell[data-stage] .summary, .shell[data-plain] .summary { animation: none; }
+  .shell[data-stage="exit"] .summary { opacity: 0; transition: opacity var(--d-slow) ease-in; }
+  .shell[data-stage="exit"] .summaryColumn { background-color: var(--bg); border-color: transparent; transition: background-color var(--d-slow) ease-in, border-color var(--d-slow) ease-in; }
+  .shell[data-stage="intro"] .main { transform: translateX(var(--stage-offset, 0px)); }
+  .shell[data-stage="intro"] .summaryColumn { background-color: var(--bg); border-color: transparent; }
+  .shell[data-stage="intro"] .summary { opacity: 0; transform: translateX(70px) scale(.85); filter: blur(2px); }
+  .shell[data-stage="settle"] .main { transition: transform .4s cubic-bezier(.2, .8, 0, 1); }
+  .shell[data-stage="settle"] .summaryColumn { transition: background-color 80ms ease 80ms, border-color 80ms ease 80ms; }
+  .shell[data-stage="settle"] .summary { transition: transform .4s cubic-bezier(.2, .8, 0, 1) 30ms, opacity .36s ease-out 30ms, filter .36s ease-out 30ms; }
+}
+@keyframes fade-in { from { opacity: 0; } }
+
+/* Header contents */
+.logo, .bag {
+  padding: 0; border: 0; border-radius: 3px; background: none; cursor: pointer;
+  outline: 0 solid var(--ring);
+  transition: color var(--d-fast) var(--ease), outline-width var(--d-fast) var(--ease-out);
+}
+.logo:focus-visible, .bag:focus-visible { outline-width: 3px; }
+.logo { color: var(--text); font-size: 24px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; text-decoration: none; }
+.bag { display: inline-flex; color: var(--accent); }
+.bag:hover { color: var(--accent-hover); }

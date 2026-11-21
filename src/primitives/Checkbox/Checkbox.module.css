@@ -1,0 +1,14 @@
+/* The tick draws itself. */
+.check { position: relative; display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
+.check input { position: absolute; width: 18px; height: 18px; margin: 0; opacity: 0; cursor: pointer; }
+.box {
+  display: grid; place-items: center; flex: none; width: 18px; height: 18px; border-radius: 7px;
+  background: #fff; box-shadow: inset 0 0 0 1px var(--border); outline: 0 solid var(--ring);
+  transition: background-color var(--d-fast) var(--ease-out), box-shadow var(--d-fast) var(--ease-out), outline-width var(--d-fast) var(--ease-out);
+}
+.box svg { width: 12px; height: 12px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.check:hover .box { box-shadow: inset 0 0 0 1px #8f8f8f; }
+.check input:checked + .box { background: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.check input:checked + .box svg { animation: draw var(--d-slow) linear 5ms both; }
+.check input:focus-visible + .box { outline-width: 3px; }
+@keyframes draw { to { stroke-dashoffset: 0; } }

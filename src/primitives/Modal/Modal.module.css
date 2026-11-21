@@ -1,0 +1,16 @@
+.modal { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 20px; }
+.backdrop { position: absolute; inset: 0; background: hsla(0, 0%, 0%, .6); opacity: 0; transition: opacity var(--d-base) ease-in; }
+.modal[data-open] .backdrop { opacity: 1; transition: opacity var(--d-slow) var(--ease-out); }
+.dialog {
+  position: relative; display: flex; flex-direction: column; width: 100%; max-width: 600px; max-height: min(80vh, 640px);
+  border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-pop);
+  opacity: 0; transform: scale(.98); transition: opacity var(--d-base) ease-in, transform var(--d-base) ease-in;
+}
+.modal[data-open] .dialog { opacity: 1; transform: none; transition: opacity var(--d-slower) var(--ease-spring), transform var(--d-slower) var(--ease-spring); }
+.head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 20px 14px; }
+.title { margin: 0; font-size: 20px; line-height: 1.2; font-weight: 600; }
+.close { display: grid; place-items: center; width: 32px; height: 32px; margin: 0; padding: 0; border: 0; border-radius: 50%; background: none; color: inherit; cursor: pointer; outline: 0 solid var(--ring); transition: background-color var(--d-fast) var(--ease), outline-width var(--d-fast) var(--ease-out); }
+.close:hover { background: var(--bg-subdued); }
+.close:focus-visible { outline-width: 3px; }
+.body { padding: 0 20px 24px; overflow: auto; }
+.body p + p { margin-top: 12px; }

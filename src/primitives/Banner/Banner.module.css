@@ -1,0 +1,7 @@
+.banner {
+  display: flex; gap: 10px; margin-bottom: 14px; padding: 14px; border-radius: var(--radius); outline: 0;
+  background: color-mix(in srgb, var(--critical) 6%, #fff); border: 1px solid color-mix(in srgb, var(--critical) 28%, #fff);
+}
+.banner svg { color: var(--critical); }
+.banner[data-open] { animation: drop-in var(--d-base) var(--ease-spring) both; }
+@keyframes drop-in { from { opacity: 0; transform: translateY(-8px); } }

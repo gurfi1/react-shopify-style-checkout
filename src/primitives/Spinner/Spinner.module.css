@@ -1,0 +1,14 @@
+/* A round-capped arc that grows from 6% to 74% of the circle and back while turning twice per cycle. */
+.spinner circle { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 5.67 100; }
+.spinner[data-active] { animation: spin-rotate 1.6s infinite; }
+.spinner[data-active] circle { animation: spin-dash 1.6s infinite; }
+@keyframes spin-rotate {
+  0% { transform: rotate(-16.8deg); animation-timing-function: cubic-bezier(.51, .2, .59, .77); }
+  50% { transform: rotate(347.3deg); animation-timing-function: cubic-bezier(.48, .04, .6, .81); }
+  100% { transform: rotate(703.2deg); }
+}
+@keyframes spin-dash {
+  0% { stroke-dasharray: 5.67 100; animation-timing-function: cubic-bezier(.36, -.04, .54, 1.13); }
+  50% { stroke-dasharray: 73.53 100; animation-timing-function: cubic-bezier(.55, -.18, .57, .63); }
+  100% { stroke-dasharray: 5.67 100; }
+}
