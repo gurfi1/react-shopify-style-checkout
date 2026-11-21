@@ -17,7 +17,7 @@ npm install
 npm run dev
 ```
 
-You need Node 22 or newer.
+You need Node 24 or newer. The lockfile is written by npm 11, which ships with Node 24; with an older npm, `npm ci` rejects it (plain `npm install` still works).
 
 ## How the project is laid out
 
