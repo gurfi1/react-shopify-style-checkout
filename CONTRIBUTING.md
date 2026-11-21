@@ -17,7 +17,9 @@ npm install
 npm run dev
 ```
 
-You need Node 24 or newer. The lockfile is written by npm 11, which ships with Node 24; with an older npm, `npm ci` rejects it (plain `npm install` still works).
+You need Node 24 or newer, which is what CI runs.
+
+If you add or update a dependency, regenerate the lockfile from a clean state (`rm -rf node_modules package-lock.json && npm install`). A lockfile updated in place on one operating system can leave out packages another one needs, and `npm ci` then fails in CI.
 
 ## How the project is laid out
 
