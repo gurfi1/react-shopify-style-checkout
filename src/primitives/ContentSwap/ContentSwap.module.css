@@ -4,3 +4,6 @@
 @keyframes fade-in { from { opacity: 0; } }
 @keyframes slide-from-start { from { transform: translateX(-1%); } }
 @keyframes slide-from-end { from { transform: translateX(1%); } }
+/* In a right-to-left page "start" is the right-hand side, so the nudges swap. */
+:global([dir="rtl"]) .in { animation-name: fade-in, slide-from-end; }
+:global([dir="rtl"]) .inEnd { animation-name: fade-in, slide-from-start; }

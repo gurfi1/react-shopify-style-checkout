@@ -4,7 +4,7 @@ import styles from './OrderDetails.module.css';
 
 export type OrderDetail = {
   title: string;
-  /** One entry per line. */
+  /** One entry per line. A plain string is isolated so it keeps its own text direction. */
   lines: ReactNode[];
 };
 
@@ -28,7 +28,8 @@ export function OrderDetails({ columns, className, style }: OrderDetailsProps) {
                 {detail.lines.map((line, position) => (
                   <Fragment key={position}>
                     {position > 0 && <br />}
-                    {line}
+                    {/* Plain text is data (a name, an address) and keeps its own direction. Anything richer is left to the caller. */}
+                    {typeof line === 'string' ? <bdi>{line}</bdi> : line}
                   </Fragment>
                 ))}
               </p>

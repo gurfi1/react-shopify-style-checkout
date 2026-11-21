@@ -34,7 +34,7 @@ What is built in, what was tested and how, and what is still missing. Last check
 | Reduced motion | The whole flow with the setting emulated, including a declined card | Completed; all transitions measured at 1ms; final state correct |
 | iOS Safari | iOS 26.2 in the Simulator, iPhone 17 Pro: typing, the typo suggestion, the summary toggle, pick-up, cash on delivery, placing an order | Completed. This pass found the zoom-on-focus problem, now fixed |
 
-**Not tested:** a screen reader (VoiceOver, NVDA, JAWS), Firefox, desktop Safari, Android, Windows high-contrast mode, and right-to-left layout.
+**Not tested:** a screen reader (VoiceOver, NVDA, JAWS), Firefox, desktop Safari, Android, and Windows high-contrast mode. Right-to-left layout was tested with Hebrew in Chromium only; see [wording-and-locale.md](wording-and-locale.md#right-to-left-languages).
 
 ## Known gaps
 

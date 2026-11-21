@@ -16,8 +16,11 @@ export type TextFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'placeh
 };
 
 /** A text input with a floating label: the placeholder shows first, and a small label fades in once there is a value. */
-export function TextField({ label, error, accessory, below, className, id, type = 'text', ref, ...input }: TextFieldProps) {
+export function TextField({ label, error, accessory, below, className, id, type = 'text', dir, ref, ...input }: TextFieldProps) {
   const generated = useId();
+  // Typed text takes its direction from what was typed, so an English address in a Hebrew form
+  // (or the reverse) reads correctly. An empty field follows the page, so its placeholder does too.
+  const direction = dir ?? (typeof input.value === 'string' && input.value !== '' ? 'auto' : undefined);
   const fieldId = id ?? generated;
   const errorId = 'err-' + fieldId;
   return (
@@ -27,6 +30,7 @@ export function TextField({ label, error, accessory, below, className, id, type 
         ref={ref}
         id={fieldId}
         type={type}
+        dir={direction}
         placeholder={label}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? errorId : input['aria-describedby']}

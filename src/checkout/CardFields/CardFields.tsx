@@ -42,6 +42,7 @@ export function CardFields({ value, onChange, errors = {}, onBlurField, children
       <TextField
         id={CARD_FIELD_IDS.number}
         name="cc"
+        dir="ltr"
         label={labels.cardNumber}
         value={value.number}
         error={errors.number}
@@ -55,6 +56,7 @@ export function CardFields({ value, onChange, errors = {}, onBlurField, children
         <TextField
           id={CARD_FIELD_IDS.expiry}
           name="exp"
+          dir="ltr"
           label={labels.expiry}
           value={value.expiry}
           error={errors.expiry}
@@ -69,6 +71,7 @@ export function CardFields({ value, onChange, errors = {}, onBlurField, children
         <TextField
           id={CARD_FIELD_IDS.cvc}
           name="cvc"
+          dir="ltr"
           label={labels.securityCode}
           value={value.cvc}
           error={errors.cvc}
@@ -137,7 +140,7 @@ export function CardBrandBadges({ brand = '', className }: CardBrandBadgesProps)
         }
       >
         <button type="button" className={cx(styles.badge, styles.moreButton)}>
-          {labels.moreCardsCount}
+          <span dir="ltr">{labels.moreCardsCount}</span>
         </button>
       </Tooltip>
     </span>

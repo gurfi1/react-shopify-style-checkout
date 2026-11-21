@@ -90,10 +90,10 @@ export function SearchIcon({ size = 18, ...props }: IconProps) {
   );
 }
 
-/** Delivery truck. "Ship". */
+/** Delivery truck. "Ship". Mirrored in right-to-left pages, so it drives the way the text reads. */
 export function TruckIcon({ size = 18, ...props }: IconProps) {
   return (
-    <svg {...base(size, 18, props)} {...stroke(1.4)}>
+    <svg {...base(size, 18, props)} {...stroke(1.4)} data-mirror-in-rtl="">
       <path d="M1.5 4.5h9v8h-9z" />
       <path d="M10.5 7h3.2l2.8 2.8v2.7h-6" />
       <circle cx="5" cy="13.2" r="1.6" fill="#fff" />
@@ -133,10 +133,10 @@ export function TickIcon({ size = 14, ...props }: IconProps) {
   );
 }
 
-/** Browser window with an arrow leaving it. Redirect-style payment methods. */
+/** Browser window with an arrow leaving it. Redirect-style payment methods. Mirrored in right-to-left pages. */
 export function RedirectIllustration(props: Omit<SVGProps<SVGSVGElement>, 'children'>) {
   return (
-    <svg width={132} height={56} viewBox="0 0 132 56" aria-hidden {...props} {...stroke(1.4)}>
+    <svg width={132} height={56} viewBox="0 0 132 56" aria-hidden {...props} {...stroke(1.4)} data-mirror-in-rtl="">
       <rect x="16" y="6" width="80" height="44" rx="6" />
       <path d="M16 17h80" />
       <circle cx="23" cy="11.5" r="1" />

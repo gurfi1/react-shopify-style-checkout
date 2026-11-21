@@ -2,7 +2,7 @@
 
 The measurements and motion behind the components, and where each number came from.
 
-**On this page:** [Where the numbers come from](#where-the-numbers-come-from) · [Layout](#layout) · [Type and spacing](#type-and-spacing) · [Fields](#fields) · [Motion](#motion) · [Page-load sequence](#page-load-sequence) · [Thank-you sequence](#thank-you-sequence) · [Responsive behaviour](#responsive-behaviour) · [Edge cases](#edge-cases)
+**On this page:** [Where the numbers come from](#where-the-numbers-come-from) · [Layout](#layout) · [Type and spacing](#type-and-spacing) · [Fields](#fields) · [Motion](#motion) · [Page-load sequence](#page-load-sequence) · [Thank-you sequence](#thank-you-sequence) · [Responsive behaviour](#responsive-behaviour) · [Right to left](#right-to-left) · [Edge cases](#edge-cases)
 
 Tokens (colours, corners, shadows, durations, curves) are listed in [theming.md](theming.md). Each component's own details are in the README beside it.
 
@@ -133,6 +133,10 @@ Below 1000px the column steps are skipped; the rest is the same. Focus moves to 
 | Below 1000px | One column. The summary collapses behind a bar that shows the total. The summary is repeated above the pay button |
 | Form narrower than 420px | City / State / ZIP stack into one column. This follows the form's own width, not the window's |
 | Below 480px | Wallet buttons stack; order details on the thank-you page become one column |
+
+## Right to left
+
+With `dir="rtl"` the whole layout mirrors, with no change to any measurement on this page. Sideways motion reverses, the delivery truck and the redirect arrow flip, and numbers, codes and prices keep reading left to right. [wording-and-locale.md](wording-and-locale.md#right-to-left-languages) has the details.
 
 ## Edge cases
 

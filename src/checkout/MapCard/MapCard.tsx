@@ -23,7 +23,7 @@ export function MapCard({ label, place, active = true, className }: MapCardProps
       <span className={styles.pin} />
       <div className={styles.callout}>
         <span className={styles.label}>{label}</span>
-        <b>{place}</b>
+        <b><bdi>{place}</bdi></b>
       </div>
     </div>
   );

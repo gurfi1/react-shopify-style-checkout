@@ -86,6 +86,7 @@ export function useCheckout({ api, subtotal, countries = COUNTRIES, defaultCount
     // "Name on card" follows the shipping name until it is edited by hand.
     if (which === 'shipping' && (field === 'firstName' || field === 'lastName') && !nameEdited) {
       setCardValue(current => ({ ...current, name: [next.firstName.trim(), next.lastName.trim()].filter(Boolean).join(' ') }));
+      setErrors(current => (current.card.name ? { ...current, card: { ...current.card, name: undefined } } : current));
     }
   };
   const setShipping = changeAddress('shipping');

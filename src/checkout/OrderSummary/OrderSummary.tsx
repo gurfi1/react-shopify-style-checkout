@@ -72,7 +72,7 @@ export function OrderSummaryToggle({ open, onToggle, total, controls, className 
         {labels.orderSummary}
         <ChevronDownIcon />
       </span>
-      <strong>{total}</strong>
+      <strong><bdi>{total}</bdi></strong>
     </button>
   );
 }

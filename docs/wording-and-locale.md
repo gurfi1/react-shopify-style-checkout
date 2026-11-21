@@ -118,4 +118,39 @@ Without a provider, blocks use English and US dollars. Building blocks such as `
 
 ## Right-to-left languages
 
-The stylesheets use logical properties (`inset-inline-start`, `margin-inline-end`, `text-align: start`) throughout, and the segmented control's pill reverses under `dir="rtl"`. **This has not been tested.** If you try it with Hebrew or Arabic, an issue describing what you find would be very welcome.
+Set the direction and pass a right-to-left set of labels. Hebrew ships with the project:
+
+```tsx
+import { Checkout, he } from './checkout-kit';
+
+<Checkout dir="rtl" labels={he} locale="he-IL" currency="ILS" … />
+```
+
+`dir="rtl"` on `Checkout` (or on `Theme`) is enough. If the whole page is right to left, set `dir="rtl"` on `<html>` instead and leave the prop off; the checkout follows the page.
+
+Try it: the demo has a Hebrew mode at [`?lang=he`](https://gurfi1.github.io/react-shopify-style-checkout/?lang=he).
+
+### What changes
+
+| | In a right-to-left page |
+|---|---|
+| Layout | Everything mirrors: the form moves to the right, the summary to the left, labels and icons inside fields swap sides. The stylesheets use logical properties, so this needs no extra rules |
+| Email, phone, card number, expiry, security code | Stay left to right, aligned to the right. A phone number or a card number written right to left would have its groups reversed |
+| Other typed text | Takes its direction from what is typed. An English street name in a Hebrew form reads correctly, and so does Hebrew in an English form |
+| Names, addresses, prices, codes shown back to the shopper | Each is isolated, so the text around it cannot reorder it. "12 Market St" stays "12 Market St" |
+| Confirmation code | Always left to right |
+| Prices | Formatted by the browser for the `locale`, including where the currency symbol and the minus sign go |
+| Motion that travels sideways | Reverses: content nudges in from the other side, and the thank-you page's columns part the other way |
+| Icons that show movement | The delivery truck and the redirect arrow face the reading direction. Other icons are unchanged |
+
+### What was tested
+
+Hebrew, in Chromium: the whole flow at desktop and phone widths, and an automated mirror test that checks every element in the right-to-left layout sits exactly where its left-to-right twin would if the page were flipped, across nine states.
+
+**Not tested:** Arabic and other right-to-left languages, Safari and Firefox in right-to-left, and screen readers. If you try one, an issue describing what you find would be very welcome.
+
+### Adding a language
+
+1. Copy [`src/locales/he.ts`](../src/locales/he.ts) to a new file named for the language code.
+2. Translate every value. The file is typed as `Labels`, so a missing label is a compile error.
+3. Export it from `src/index.ts` and run `npm run docs`.

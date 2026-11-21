@@ -51,7 +51,8 @@ Each component folder contains:
 4. **Only the states the design has.** Components reproduce the checkout they are modelled on. A new variant (another banner colour, a third button size) needs a reason beyond "it might be useful".
 5. **Nothing store-specific in `src/`.** Products, policies and prices belong in `demo/` or in props.
 6. **Every word is a label.** Text a shopper reads goes in `src/labels.ts`, so it can be translated.
-7. **Keyboard and screen reader first.** Use native elements where one exists. New interactive pieces need a visible focus state and an accessible name.
+7. **Both text directions.** Use logical properties (`margin-inline-start`, `inset-inline-end`, `text-align: start`), never `left` or `right`. Wrap text that comes from data (a name, an address, a price) in `<bdi>`. Check your change at `?dir=rtl`.
+8. **Keyboard and screen reader first.** Use native elements where one exists. New interactive pieces need a visible focus state and an accessible name.
 
 ## Before you open a pull request
 
@@ -76,7 +77,7 @@ In the pull request, say what changed and how you checked it. If it changes how 
 
 ## Changing wording or adding a translation
 
-Labels live in `src/labels.ts`. Add a key there with its English text, then use it through `useLabels()`. Complete translations are welcome as files under a new `src/locales/` folder; open an issue first so the shape can be agreed.
+Labels live in `src/labels.ts`. Add a key there with its English text, then use it through `useLabels()`. Complete translations are welcome as files in `src/locales/`, following `he.ts`: one object typed as `Labels`, so a missing label is a compile error.
 
 ## Licence
 

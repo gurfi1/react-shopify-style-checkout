@@ -36,7 +36,7 @@ export function Totals({ subtotal, itemCount, discount = null, shipping, shippin
     <div className={cx(styles.totals, className)}>
       <div className={styles.row}>
         <span>{labels.subtotal(itemCount)}</span>
-        <span>{money(subtotal)}</span>
+        <bdi>{money(subtotal)}</bdi>
       </div>
       <Collapsible open={discount != null} className={styles.collapsible}>
         <div className={styles.rowPad}>
@@ -44,10 +44,11 @@ export function Totals({ subtotal, itemCount, discount = null, shipping, shippin
             {labels.discount}
             <span className={styles.code}>
               <TagIcon size={12} />
-              <span>{shown?.code}</span>
+              <bdi>{shown?.code}</bdi>
             </span>
           </span>
-          <span>−{money(shown?.amount ?? 0)}</span>
+          {/* Formatted as a negative number so the sign sits where the locale puts it; then a true minus sign. */}
+          <bdi>{money(-(shown?.amount ?? 0)).replace('-', '−')}</bdi>
         </div>
       </Collapsible>
       <div className={styles.row}>
@@ -56,20 +57,20 @@ export function Totals({ subtotal, itemCount, discount = null, shipping, shippin
           {shipping === 'loading' && <Skeleton shape="pill" />}
           {shipping === 'pending' && <span className={styles.pending}>{labels.enterShippingAddress}</span>}
           {shipping === 'free' && labels.free}
-          {shipping === 'amount' && money(shippingAmount ?? 0)}
+          {shipping === 'amount' && <bdi>{money(shippingAmount ?? 0)}</bdi>}
         </span>
       </div>
       <div className={cx(styles.row, styles.total)}>
         <strong>{labels.total}</strong>
         <span>
           <small>{currency}</small>
-          <strong>{money(total)}</strong>
+          <strong><bdi>{money(total)}</bdi></strong>
         </span>
       </div>
       <Collapsible open={discount != null} className={styles.collapsible}>
         <div className={styles.savings}>
           <TagIcon />
-          {labels.totalSavings} <span>{money(shown?.amount ?? 0)}</span>
+          {labels.totalSavings} <span><bdi>{money(shown?.amount ?? 0)}</bdi></span>
         </div>
       </Collapsible>
     </div>

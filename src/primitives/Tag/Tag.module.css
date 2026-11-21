@@ -1,5 +1,5 @@
 .tag {
-  display: inline-flex; align-items: center; gap: 6px; padding: 6px 6px 6px 10px; border-radius: var(--radius-sm);
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px; padding-inline-start: 10px; border-radius: var(--radius-sm);
   background: #e6e6e6; font-size: 12px; font-weight: 600;
   animation: tag-pop .4s ease both;
 }
