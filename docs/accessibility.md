@@ -33,8 +33,9 @@ What is built in, what was tested and how, and what is still missing. Last check
 | Keyboard only | The whole flow with Tab, typing, arrow keys and Enter, in headless Chromium | Every control reached in a sensible order; an order placed; focus landed on the thank-you heading |
 | Reduced motion | The whole flow with the setting emulated, including a declined card | Completed; all transitions measured at 1ms; final state correct |
 | iOS Safari | iOS 26.2 in the Simulator, iPhone 17 Pro: typing, the typo suggestion, the summary toggle, pick-up, cash on delivery, placing an order | Completed. This pass found the zoom-on-focus problem, now fixed |
+| Desktop Safari and Android | By hand, in November 2026. Browser versions and the exact steps were not recorded | No problems reported |
 
-**Not tested:** a screen reader (VoiceOver, NVDA, JAWS), Firefox, desktop Safari, Android, and Windows high-contrast mode. Right-to-left layout was tested with Hebrew in Chromium only; see [wording-and-locale.md](wording-and-locale.md#right-to-left-languages).
+**Not tested:** a screen reader (VoiceOver, NVDA, JAWS), Firefox, and Windows high-contrast mode. Right-to-left layout was tested with Hebrew in Chromium only; see [wording-and-locale.md](wording-and-locale.md#right-to-left-languages).
 
 ## Known gaps
 

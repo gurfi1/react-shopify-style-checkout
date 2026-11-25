@@ -196,7 +196,8 @@ Hooks and helpers: [`src/hooks`](src/hooks) · [`src/lib`](src/lib) · [`src/ico
 |---|---|
 | Chromium (Chrome, Edge, Brave) | Tested throughout development |
 | iOS Safari | One full pass on iOS 26.2 in the Simulator: an order placed start to finish |
-| Firefox, desktop Safari, Android | **Not tested.** The CSS needs `color-mix()` and container queries, so roughly Chrome 111, Safari 16.2 and Firefox 113 or newer |
+| Desktop Safari, Android | Tried by hand in November 2026. Browser versions were not recorded |
+| Firefox | **Not tested.** The CSS needs `color-mix()` and container queries, so roughly Chrome 111, Safari 16.2 and Firefox 113 or newer |
 | Automated accessibility scan | axe-core reports no violations on any of five checkout states |
 | Keyboard only | An order can be placed without a mouse |
 | Reduced motion | Honoured; all motion drops to 1ms |
@@ -213,7 +214,7 @@ The layout, measurements and timings are modelled on Shopify's one-page checkout
 
 Issues and pull requests are welcome, from anyone. Good places to start:
 
-- Try it in Firefox, desktop Safari, with a screen reader, or in Arabic, and report what you find.
+- Try it in Firefox, with a screen reader, or in Arabic, and report what you find.
 - Translate the labels into your language. Hebrew is in [`src/locales`](src/locales) as the model.
 - Fix one of the [known accessibility gaps](docs/accessibility.md#known-gaps).
 - Add component tests. The logic is tested; the components were checked by hand.
