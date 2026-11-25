@@ -10,6 +10,10 @@ Notable changes to this project. Versions follow [semantic versioning](https://s
 - **Hebrew labels**, exported as `he`, and a Hebrew mode in the demo at `?lang=he`. `?dir=rtl` mirrors the English demo for testing layout alone.
 - `dir` prop on `Checkout`.
 
+### Tested
+
+- Desktop Safari and Android, by hand. Firefox and screen readers remain untested.
+
 ### Fixed
 
 - The "Name on card" error stayed visible after the name was filled in from the shipping name.

@@ -4,7 +4,7 @@ Issues and pull requests are welcome from anyone. You do not need to ask first f
 
 ## Ways to help that need no code
 
-- **Test it somewhere it has not been tested**: Firefox, desktop Safari, Android, a screen reader, a right-to-left language. Report what you find, including "it works".
+- **Test it somewhere it has not been tested**: Firefox, a screen reader, a right-to-left language. Report what you find, including "it works".
 - **Report a bug.** Say which component, which browser, what you did and what happened. A screenshot helps.
 - **Point out a mistake in the docs.**
 
